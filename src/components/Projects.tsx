@@ -12,13 +12,13 @@ const Projects = () => {
 
   const projects = [
     {
-      id: 1,
-      title: "Smart Classroom Sync System",
+      id: 3,
+      title: "PANKAJ ELECTRICALS – MERN E-Commerce",
       description:
-        "Role-based backend system for Teacher Web Portal & Student Mobile App. Built scalable REST APIs with JWT authentication and role-based access control.",
-      tech: ["Node.js", "Express", "MongoDB", "JWT", "AWS EC2"],
-      githubUrl: "https://github.com/devvarshney45/SmartSync",
-      liveUrl: "https://smart-classroom-backend-eg27.onrender.com",
+        "Full-stack MERN e-commerce platform with Google Login, Admin Dashboard & JWT authentication. Built for real business digitization.",
+      tech: ["React", "Node.js", "MongoDB", "JWT", "Tailwind"],
+      githubUrl: "https://github.com/devvarshney45/PANKAJ-ELECTRICALS",
+      liveUrl: "https://pankaj-electricals.vercel.app/",
     },
     {
       id: 2,
@@ -30,14 +30,14 @@ const Projects = () => {
       liveUrl: "https://hackathon-registration-backend.onrender.com",
     },
     {
-      id: 3,
-      title: "PANKAJ ELECTRICALS – MERN E-Commerce",
+      id: 1,
+      title: "Smart Classroom Sync System",
       description:
-        "Full-stack MERN e-commerce platform with Google Login, Admin Dashboard & JWT authentication. Built for real business digitization.",
-      tech: ["React", "Node.js", "MongoDB", "JWT", "Tailwind"],
-      githubUrl: "https://github.com/devvarshney45/PANKAJ-ELECTRICALS",
-      liveUrl: "https://pankaj-electricals.vercel.app/",
-    },
+        "Role-based backend system for Teacher Web Portal & Student Mobile App. Built scalable REST APIs with JWT authentication and role-based access control.",
+      tech: ["Node.js", "Express", "MongoDB", "JWT", "AWS EC2"],
+      githubUrl: "https://github.com/devvarshney45/SmartSync",
+      liveUrl: "https://testing-p3dv.onrender.com/",
+    }
   ];
 
   useEffect(() => {
