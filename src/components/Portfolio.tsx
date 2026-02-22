@@ -1,25 +1,27 @@
-import { useState, useEffect } from 'react';
-import Preloader from './Preloader';
-import Navigation from './Navigation';
-import Hero from './Hero';
-import About from './About';
-import Projects from './Projects';
-import Contact from './Contact';
-import Footer from './Footer';
-import Chatbot from './Chatbot';
+import { useState, useEffect } from "react";
+import Preloader from "./Preloader";
+import Navigation from "./Navigation";
+import Hero from "./Hero";
+import About from "./About";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import Chatbot from "./Chatbot";
 
 const Portfolio = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    document.documentElement.style.scrollBehavior = "smooth";
+
     if (isLoading) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isLoading]);
 
@@ -28,19 +30,28 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="relative">
-      {isLoading && <Preloader onComplete={handleLoadingComplete} />}
+    <div className="relative bg-background text-foreground min-h-screen">
       
-      <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      {/* PRELOADER */}
+      {isLoading && <Preloader onComplete={handleLoadingComplete} />}
+
+      {/* MAIN CONTENT */}
+      <div
+        className={`transition-opacity duration-1000 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+      >
         <Navigation />
-        <main>
+
+        <main className="pt-20">
           <Hero />
           <About />
           <Projects />
           <Contact />
-          <Chatbot/>
         </main>
+
         <Footer />
+        <Chatbot />
       </div>
     </div>
   );
