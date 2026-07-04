@@ -138,10 +138,10 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[20vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[20vw] md:text-[20vw] font-black whitespace-nowrap select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
+        className="absolute bottom-[20vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[14vw] md:text-[20vw] font-black md:whitespace-nowrap text-center select-none pointer-events-none leading-[0.8] md:leading-[0.7] tracking-tighter z-0"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.05)' }}>
-          Hi! I'm Dev
+          Hi! <br className="md:hidden" /> I'm Dev
         </span>
       </h1>
 
