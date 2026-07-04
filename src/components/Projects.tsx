@@ -65,7 +65,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 bg-black relative">
+    <section id="projects" className="py-16 md:py-24 px-6 bg-black relative">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 reveal">
           <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-3">Portfolio Highlights</p>

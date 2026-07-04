@@ -88,26 +88,27 @@ const Navigation = () => {
 
       {/* MOBILE MENU OVERLAY */}
       <div 
-        className={`fixed inset-0 bg-black/95 z-[90] md:hidden flex flex-col items-center justify-center transition-all duration-500 pointer-events-auto
-        ${isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"}`}
+        className={`fixed inset-0 bg-black/95 backdrop-blur-2xl z-[90] md:hidden flex flex-col items-center justify-center transition-all duration-500 ease-in-out
+        ${isMobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-full pointer-events-none"}`}
       >
-        <div className="flex flex-col items-center gap-8">
-          {navItems.map((item) => (
+        <div className="flex flex-col items-center gap-10">
+          {navItems.map((item, index) => (
             <Link
               key={item.id}
               to={item.id}
               smooth={true}
               duration={500}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-3xl text-gray-400 hover:text-white font-light tracking-widest"
+              className={`text-4xl text-white font-bold tracking-tight transition-all duration-500 transform ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+              style={{ transitionDelay: `${index * 50}ms` }}
             >
               {item.name}
             </Link>
           ))}
-          <div className="flex gap-8 mt-12 pt-12 border-t border-white/10">
+          <div className={`flex gap-10 mt-16 pt-12 border-t border-white/10 transition-all duration-500 delay-300 ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
             {socialLinks.map((social, i) => (
-              <a key={i} href={social.url} target="_blank" className="text-gray-400 hover:text-primary">
-                <social.icon size={32} />
+              <a key={i} href={social.url} target="_blank" className="text-white/40 hover:text-primary transition-transform">
+                <social.icon size={32} weight="bold" />
               </a>
             ))}
           </div>

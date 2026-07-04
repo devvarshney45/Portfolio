@@ -83,12 +83,12 @@ const About = () => {
 
           {/* RIGHT COLUMN: Senior-Level Content */}
           <div className="md:col-span-3 space-y-6 reveal reveal-right">
-            <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
               Backend Focused <br />
               <span className="text-primary font-medium italic">Full Stack Developer</span>
             </h2>
             
-            <div className="w-16 h-1 bg-primary rounded-full mb-8" />
+            <div className="w-12 md:w-16 h-1 bg-primary rounded-full mb-6 md:mb-8" />
 
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>

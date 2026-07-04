@@ -55,7 +55,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-16 px-6 bg-black relative overflow-hidden">
+    <section id="experience" className="py-16 md:py-24 px-6 bg-black relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
 

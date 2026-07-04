@@ -129,8 +129,8 @@ const Hero = () => {
       />
 
       {/* Senior Level Tech Halo / Glow behind Photo */}
-      <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] max-w-[800px] max-h-[800px] z-0">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/5 to-transparent rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] max-w-[800px] max-h-[800px] z-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/5 to-transparent rounded-full blur-[80px] md:blur-[120px] animate-pulse" />
         <div className="absolute inset-[10%] border border-primary/20 rounded-full animate-spin-slow opacity-30" />
         <div className="absolute inset-[20%] border border-secondary/15 rounded-full animate-spin-reverse opacity-20" />
       </div>
@@ -138,7 +138,7 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[14vh] left-1/2 -translate-x-1/2 text-[22vw] md:text-[20vw] font-black whitespace-nowrap select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
+        className="absolute bottom-[12vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[20vw] md:text-[20vw] font-black whitespace-nowrap select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.05)' }}>
           Hi! I'm Dev
@@ -148,9 +148,9 @@ const Hero = () => {
       {/* Cinematic Lighting & Profile Photo with Scroll Scale */}
       <div
         ref={imgRef}
-        className="relative z-10 w-full h-[95vh] flex justify-center items-end overflow-hidden pb-[14vh]"
+        className="relative z-10 w-full h-[80vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[12vh] md:pb-[14vh]"
       >
-        <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[40vw] h-[40vw] bg-primary/25 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] bg-primary/25 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
         
         <img
           src="/yourphoto.png"

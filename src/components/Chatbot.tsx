@@ -117,11 +117,11 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
       {isOpen && (
         <div
           ref={chatboxRef}
-          className="mb-4 w-80 h-96 overflow-hidden flex flex-col bg-black border border-gray-700 rounded-[2rem] shadow-2xl"
+          className="mb-4 w-[calc(100vw-2rem)] md:w-80 h-[70vh] md:h-96 overflow-hidden flex flex-col bg-black border border-gray-700 rounded-[2rem] shadow-2xl"
         >
           <div className="p-4 border-b border-gray-800">
             <div className="flex items-center justify-between">

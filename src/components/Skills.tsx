@@ -24,7 +24,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 px-6 bg-black">
+    <section id="skills" className="py-16 md:py-24 px-6 bg-black">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 reveal">
           <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-3">Core Expertise</p>
