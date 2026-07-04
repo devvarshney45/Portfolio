@@ -138,7 +138,7 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[28vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[17vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
+        className="absolute bottom-[35vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[22vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-[-0.08em] z-0"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>
           Hi! I'm Dev
@@ -148,14 +148,14 @@ const Hero = () => {
       {/* Cinematic Lighting & Profile Photo with Scroll Scale */}
       <div
         ref={imgRef}
-        className="relative z-10 w-full h-[70vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[22vh] md:pb-[14vh]"
+        className="relative z-10 w-full h-[70vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[30vh] md:pb-[14vh]"
       >
-        <div className="absolute bottom-[30%] left-1/2 -translate-x-1/2 w-[85vw] h-[85vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[35%] left-1/2 -translate-x-1/2 w-[90vw] h-[90vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
         
         <img
           src="/yourphoto.png"
           alt="Dev Varshney"
-          className="h-full w-auto object-contain object-bottom filter brightness-110 contrast-[1.3] saturate-[1.3] drop-shadow-[0_-30px_100px_hsl(var(--primary)/0.7)] select-none pointer-events-none"
+          className="h-full w-auto scale-110 md:scale-100 object-contain object-bottom filter brightness-110 contrast-[1.3] saturate-[1.3] drop-shadow-[0_-30px_100px_hsl(var(--primary)/0.7)] select-none pointer-events-none"
         />
       </div>
 
