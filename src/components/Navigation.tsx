@@ -25,8 +25,8 @@ const Navigation = () => {
 
   const socialLinks = [
     { icon: GithubLogo, url: "https://github.com/devvarshney45" },
-    { icon: LinkedinLogo, url: "https://linkedin.com/in/devvarshney" },
-    { icon: InstagramLogo, url: "https://instagram.com/devvarshney" },
+    { icon: LinkedinLogo, url: "https://www.linkedin.com/in/dev-varshney-837390325?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+    { icon: InstagramLogo, url: "https://www.instagram.com/_dev045_?igsh=ZzUwdHBlMmF4ZDA0" },
   ];
 
   return (

@@ -29,9 +29,9 @@ const Hero = () => {
       "-=0.8"
     );
 
-    // Parallax logic on scroll
+    // Parallax logic on scroll — removed x-parallax to keep it centered
     gsap.to(titleRef.current, {
-      xPercent: -20,
+      yPercent: -10, // Subtle vertical movement instead
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top top",
@@ -142,7 +142,7 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[50vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[26vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-[-0.1em] z-0"
+        className="absolute bottom-[50vh] md:bottom-[14vh] left-0 w-full text-[26vw] md:text-[19vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-[-0.05em] z-0"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>
           Hi! I'm Dev
