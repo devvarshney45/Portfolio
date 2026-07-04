@@ -1,48 +1,7 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GithubLogo, LinkedinLogo } from "phosphor-react";
 import { ArrowUp } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Footer = () => {
-  const footerRef = useRef<HTMLDivElement>(null);
-  const particlesRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(footerRef.current?.children || [], {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 90%",
-        },
-      });
-
-      const particles = particlesRef.current?.children;
-      if (particles) {
-        Array.from(particles).forEach((particle, index) => {
-          gsap.to(particle, {
-            y: -30,
-            x: Math.random() * 40 - 20,
-            duration: 3 + Math.random() * 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut",
-            delay: index * 0.5,
-          });
-        });
-      }
-    }, footerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -53,32 +12,18 @@ const Footer = () => {
   };
 
   return (
-    <footer
-      ref={footerRef}
-      className="relative py-16 px-6 border-t border-gray-700 overflow-hidden"
-    >
-      {/* Floating Particles */}
-      <div
-        ref={particlesRef}
-        className="absolute inset-0 pointer-events-none opacity-20"
-      >
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full blur-sm" />
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-primary rounded-full blur-sm" />
-        <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-primary rounded-full blur-sm" />
-        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-primary rounded-full blur-sm" />
-      </div>
-
+    <footer className="relative py-20 px-6 border-t border-gray-900 bg-black overflow-hidden">
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-16 reveal">
 
           {/* ABOUT */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
               Dev Varshney
             </h3>
-            <p className="text-gray-400 leading-relaxed mb-6">
-              Backend-focused Full Stack Developer specializing in secure, 
-              scalable systems with Spring Boot, Node.js, and modern cloud infrastructure.
+            <p className="text-gray-400 leading-relaxed text-sm">
+              Architecting secure backend systems and high-performance full-stack 
+              applications. Specialized in Java, Spring Boot, and AWS.
             </p>
 
             <div className="flex gap-4">
@@ -86,90 +31,64 @@ const Footer = () => {
                 href="https://github.com/devvarshney45"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:scale-110 transition"
+                className="w-10 h-10 bg-gray-900 border border-gray-800 rounded-lg flex items-center justify-center hover:border-primary/50 hover:bg-primary transition-all group"
               >
-                <GithubLogo size={18} className="text-white" />
+                <GithubLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
               </a>
 
               <a
                 href="https://linkedin.com/in/dev-varshney"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:scale-110 transition"
+                className="w-10 h-10 bg-gray-900 border border-gray-800 rounded-lg flex items-center justify-center hover:border-primary/50 hover:bg-primary transition-all group"
               >
-                <LinkedinLogo size={18} className="text-white" />
+                <LinkedinLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
 
           {/* QUICK LINKS */}
-          <div>
-            <h4 className="text-lg font-medium text-white mb-4">
-              Quick Links
+          <div className="space-y-6">
+            <h4 className="text-sm font-bold text-white uppercase tracking-widest">
+              Navigation
             </h4>
-            <nav className="space-y-3 text-gray-400">
-              <button
-                onClick={() => scrollToSection("hero")}
-                className="block hover:text-primary transition"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="block hover:text-primary transition"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection("experience")}
-                className="block hover:text-primary transition"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => scrollToSection("projects")}
-                className="block hover:text-primary transition"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="block hover:text-primary transition"
-              >
-                Contact
-              </button>
+            <nav className="flex flex-col gap-3 text-gray-500 text-sm">
+              <button onClick={() => scrollToSection("hero")} className="text-left hover:text-primary transition-colors">Home</button>
+              <button onClick={() => scrollToSection("experience")} className="text-left hover:text-primary transition-colors">Experience</button>
+              <button onClick={() => scrollToSection("about")} className="text-left hover:text-primary transition-colors">About</button>
+              <button onClick={() => scrollToSection("projects")} className="text-left hover:text-primary transition-colors">Projects</button>
+              <button onClick={() => scrollToSection("skills")} className="text-left hover:text-primary transition-colors">Skills</button>
             </nav>
           </div>
 
-          {/* CONTACT INFO */}
-          <div>
-            <h4 className="text-lg font-medium text-white mb-4">
-              Get In Touch
+          {/* STATUS */}
+          <div className="space-y-6">
+            <h4 className="text-sm font-bold text-white uppercase tracking-widest">
+              Current Status
             </h4>
-            <div className="space-y-3 text-gray-400">
-              <p>
-                <span className="text-primary font-medium">Email:</span><br />
-                varshneydev365@gmail.com
-              </p>
-              <p>
-                <span className="text-primary font-medium">Location:</span><br />
-                Ghaziabad, Uttar Pradesh, India
+            <div className="p-4 bg-gray-900/50 border border-gray-800 rounded-xl space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs text-gray-400 font-medium tracking-tight">Available for Internships</span>
+              </div>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Relocation available for top-tier roles across India or Remote globally.
               </p>
             </div>
           </div>
         </div>
 
         {/* BOTTOM */}
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-400 text-sm">
-          <p>
-            © 2026 Dev Varshney. All rights reserved.
-          </p>
+        <div className="pt-8 border-t border-gray-900 flex flex-col md:flex-row items-center justify-between gap-6 reveal">
+          <div className="text-gray-600 text-[10px] uppercase tracking-[0.2em] font-medium">
+            © 2026 Dev Varshney • Built with React & Spring Boot Mindset
+          </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:scale-105 transition"
+            className="group flex items-center gap-3 px-6 py-2 bg-gray-900 border border-gray-800 text-white text-xs font-bold rounded-full hover:border-primary/50 transition-all shadow-lg"
           >
-            Back to Top <ArrowUp size={16} />
+            TOP <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
       </div>
