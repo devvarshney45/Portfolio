@@ -128,12 +128,12 @@ const Hero = () => {
         className="absolute inset-0 z-0 opacity-40 pointer-events-none"
       />
 
-      {/* Top Lighting / Fill for Black Space */}
-      <div className="absolute top-0 left-0 w-full h-[40vh] bg-gradient-to-b from-primary/10 via-primary/5 to-transparent pointer-events-none z-0" />
-      <div className="absolute top-[10%] left-[10%] w-[50vw] h-[50vw] bg-secondary/5 rounded-full blur-[100px] animate-pulse pointer-events-none" />
+      {/* Top Lighting / Fill for Black Space - Ultra Smooth Fade */}
+      <div className="absolute top-0 left-0 w-full h-[60vh] bg-gradient-to-b from-primary/15 via-primary/5 to-transparent pointer-events-none z-0" />
+      <div className="absolute -top-[20%] -left-[10%] w-[100vw] h-[100vw] bg-secondary/10 rounded-full blur-[150px] animate-pulse pointer-events-none" />
 
       {/* Senior Level Tech Halo / Glow behind Photo */}
-      <div className="absolute bottom-[40%] left-1/2 -translate-x-1/2 w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] max-w-[800px] max-h-[800px] z-0">
+      <div className="absolute bottom-[25%] left-1/2 -translate-x-1/2 w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] max-w-[800px] max-h-[800px] z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/5 to-transparent rounded-full blur-[80px] md:blur-[120px] animate-pulse" />
         <div className="absolute inset-[10%] border border-primary/20 rounded-full animate-spin-slow opacity-30" />
         <div className="absolute inset-[20%] border border-secondary/15 rounded-full animate-spin-reverse opacity-20" />
@@ -142,7 +142,7 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[48vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[26vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-[-0.1em] z-0"
+        className="absolute bottom-[25vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[26vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-[-0.1em] z-0"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>
           Hi! I'm Dev
@@ -152,14 +152,14 @@ const Hero = () => {
       {/* Cinematic Lighting & Profile Photo with Scroll Scale */}
       <div
         ref={imgRef}
-        className="relative z-10 w-full h-[70vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[42vh] md:pb-[14vh]"
+        className="relative z-10 w-full h-[75vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[25vh] md:pb-[14vh]"
       >
-        <div className="absolute bottom-[35%] left-1/2 -translate-x-1/2 w-[90vw] h-[90vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[30%] left-1/2 -translate-x-1/2 w-[90vw] h-[90vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
         
         <img
           src="/yourphoto.png"
           alt="Dev Varshney"
-          className="h-full w-auto scale-125 md:scale-100 object-contain object-bottom filter brightness-110 contrast-[1.3] saturate-[1.3] drop-shadow-[0_-30px_100px_hsl(var(--primary)/0.7)] select-none pointer-events-none"
+          className="h-full w-auto scale-125 md:scale-100 object-contain object-bottom filter brightness-110 contrast-[1.4] saturate-[1.4] drop-shadow-[0_-30px_100px_hsl(var(--primary)/0.7)] select-none pointer-events-none"
         />
       </div>
 
