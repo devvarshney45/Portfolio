@@ -1,6 +1,3 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
   Code, 
   Database, 
@@ -13,32 +10,7 @@ import {
   Cpu
 } from "phosphor-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Skills = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = sectionRef.current?.querySelectorAll(".group");
-      if (cards && cards.length > 0) {
-        gsap.from(cards, {
-          scale: 0.9,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.05,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 85%",
-          },
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const skills = [
     { icon: Stack, name: "Java / Spring Boot", level: 92 },
     { icon: Cpu, name: "C++ / Data Structures", level: 90 },
@@ -52,21 +24,21 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" ref={sectionRef} className="py-24 px-6 bg-black">
+    <section id="skills" className="py-24 px-6 bg-black">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 reveal">
           <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-3">Core Expertise</p>
-          <h2 className="text-4xl md:text-5xl font-light">
+          <h2 className="text-4xl md:text-5xl font-light text-white">
             Technical <span className="text-primary">Skills</span>
           </h2>
           <div className="w-16 h-1 bg-primary rounded-full mx-auto mt-5" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {skills.map((skill) => (
+          {skills.map((skill, index) => (
             <div
               key={skill.name}
-              className="group bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-primary/40 transition-all duration-300"
+              className={`group bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 reveal reveal-scale reveal-delay-${(index % 6) + 1}`}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -76,7 +48,7 @@ const Skills = () => {
               </div>
               <div className="w-full bg-gray-800 rounded-full h-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all duration-1000"
+                  className="bg-primary h-2 rounded-full"
                   style={{ width: `${skill.level}%` }}
                 />
               </div>

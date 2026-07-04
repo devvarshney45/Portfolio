@@ -1,34 +1,6 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GithubLogo, Globe, ArrowUpRight } from "phosphor-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Projects = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = sectionRef.current?.querySelectorAll(".group");
-      if (cards && cards.length > 0) {
-        gsap.from(cards, {
-          y: 80,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 85%",
-          },
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const projects = [
     {
       id: 1,
@@ -93,9 +65,9 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" ref={sectionRef} className="py-24 px-6 bg-black relative">
+    <section id="projects" className="py-24 px-6 bg-black relative">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-16 reveal">
           <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-3">Portfolio Highlights</p>
           <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
             Featured <span className="text-primary font-medium italic">Projects</span>
@@ -104,10 +76,10 @@ const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-gray-900/40 border border-gray-800 rounded-[2rem] p-8 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 flex flex-col"
+              className={`group bg-gray-900/40 border border-gray-800 rounded-[2rem] p-8 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 flex flex-col reveal reveal-scale reveal-delay-${(index % 6) + 1}`}
             >
               <div className="flex justify-between items-start mb-6">
                 <span className="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">

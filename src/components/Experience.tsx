@@ -1,6 +1,3 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
   Briefcase, 
   Calendar, 
@@ -11,11 +8,7 @@ import {
   Database
 } from "phosphor-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Experience = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
   const experiences = [
     {
       title: "Full Stack Engineer Intern",
@@ -61,35 +54,13 @@ const Experience = () => {
     },
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = sectionRef.current?.querySelectorAll(".group");
-      if (cards && cards.length > 0) {
-        gsap.from(cards, {
-          y: 60,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section id="experience" ref={sectionRef} className="py-16 px-6 bg-black relative overflow-hidden">
+    <section id="experience" className="py-16 px-6 bg-black relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-12 text-center">
+        <div className="mb-12 text-center reveal">
           <p className="text-primary text-xs font-medium tracking-[0.2em] uppercase mb-2">Work History</p>
           <h2 className="text-3xl md:text-5xl font-light text-white">
             Professional <span className="text-primary font-medium italic">Experience</span>
@@ -101,7 +72,7 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <div 
               key={index} 
-              className="group relative bg-gray-900/40 border border-gray-800 rounded-3xl p-6 hover:border-primary/40 transition-all duration-300 flex flex-col h-full"
+              className={`group relative bg-gray-900/40 border border-gray-800 rounded-3xl p-6 hover:border-primary/40 transition-all duration-300 flex flex-col h-full hover:-translate-y-1 reveal reveal-delay-${index + 1}`}
             >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${exp.color} p-3 flex items-center justify-center mb-5`}>
                 <exp.icon size={24} className="text-white" />

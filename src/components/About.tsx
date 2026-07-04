@@ -1,6 +1,3 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   GithubLogo,
   DownloadSimple,
@@ -8,11 +5,7 @@ import {
   Terminal,
 } from "phosphor-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const About = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
   const downloadResume = () => {
     const link = document.createElement("a");
     link.href = "/My-Resume.pdf";
@@ -22,30 +15,14 @@ const About = () => {
     document.body.removeChild(link);
   };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".about-animate", {
-        opacity: 0,
-        x: (i) => (i === 0 ? -100 : 100),
-        duration: 1.2,
-        stagger: 0.2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-24 px-6 bg-black/40">
+    <section id="about" className="py-24 px-6 bg-black/40">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-5 gap-16 items-center">
           
           {/* LEFT COLUMN: Actions */}
-          <div className="md:col-span-2 space-y-6 about-animate">
+          <div className="md:col-span-2 space-y-6 reveal reveal-left">
             <h3 className="text-primary text-sm font-medium tracking-[0.3em] uppercase mb-8">Take Action</h3>
             
             <button
@@ -105,7 +82,7 @@ const About = () => {
           </div>
 
           {/* RIGHT COLUMN: Senior-Level Content */}
-          <div className="md:col-span-3 space-y-6 about-animate">
+          <div className="md:col-span-3 space-y-6 reveal reveal-right">
             <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
               Backend Focused <br />
               <span className="text-primary font-medium italic">Full Stack Developer</span>

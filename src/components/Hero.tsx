@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -24,6 +28,27 @@ const Hero = () => {
       },
       "-=0.8"
     );
+
+    // Parallax logic on scroll
+    gsap.to(titleRef.current, {
+      xPercent: -20,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1
+      }
+    });
+
+    gsap.to(imgRef.current, {
+      scale: 0.85,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1
+      }
+    });
 
     // BACKGROUND PARTICLES ANIMATION
     const canvas = canvasRef.current;
@@ -94,6 +119,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="relative h-screen w-full flex flex-col items-center justify-end overflow-hidden bg-black"
     >
       {/* Dynamic Background Animation (Neural Network / Particles) */}
@@ -109,24 +135,34 @@ const Hero = () => {
         <div className="absolute inset-[20%] border border-secondary/15 rounded-full animate-spin-reverse opacity-20" />
       </div>
 
-      {/* Background Text - Massive Size & Aligned with Image Base */}
+      {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[12vh] left-1/2 -translate-x-1/2 text-[26vw] md:text-[22vw] font-black text-white/[0.08] whitespace-nowrap select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
+        className="absolute bottom-[14vh] left-1/2 -translate-x-1/2 text-[22vw] md:text-[20vw] font-black whitespace-nowrap select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
       >
-        Hi! I'm Dev
+        <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.05)' }}>
+          Hi! I'm Dev
+        </span>
       </h1>
 
-      {/* Profile Photo - Precisely Aligned to Text Bottom */}
+      {/* Cinematic Lighting & Profile Photo with Scroll Scale */}
       <div
         ref={imgRef}
-        className="relative z-10 w-full h-[95vh] flex justify-center items-end overflow-hidden pb-[13vh]"
+        className="relative z-10 w-full h-[95vh] flex justify-center items-end overflow-hidden pb-[14vh]"
       >
+        <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[40vw] h-[40vw] bg-primary/25 rounded-full blur-[120px] pointer-events-none" />
+        
         <img
           src="/yourphoto.png"
           alt="Dev Varshney"
-          className="h-full w-auto object-contain object-bottom filter brightness-110 contrast-[1.15] saturate-[1.15] drop-shadow-[0_-5px_60px_hsl(var(--primary)/0.5)] select-none pointer-events-none"
+          className="h-full w-auto object-contain object-bottom filter brightness-110 contrast-[1.2] saturate-[1.2] drop-shadow-[0_-20px_100px_hsl(var(--primary)/0.6)] select-none pointer-events-none"
         />
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20">
+        <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
+        <span className="text-[10px] uppercase tracking-[0.4em] text-primary/60 font-bold animate-pulse">Scroll</span>
       </div>
 
       {/* Scroll Indicator */}

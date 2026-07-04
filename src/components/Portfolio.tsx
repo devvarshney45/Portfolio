@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 import Preloader from "./Preloader";
 import Navigation from "./Navigation";
 import Hero from "./Hero";
@@ -14,6 +15,7 @@ import Chatbot from "./Chatbot";
 
 const Portfolio = () => {
   const [isLoading, setIsLoading] = useState(true);
+  useScrollReveal();
 
   useEffect(() => {
     let scroll: any;
