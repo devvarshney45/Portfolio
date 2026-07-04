@@ -138,24 +138,24 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[20vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[14vw] md:text-[20vw] font-black md:whitespace-nowrap text-center select-none pointer-events-none leading-[0.8] md:leading-[0.7] tracking-tighter z-0"
+        className="absolute bottom-[28vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[16vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
       >
-        <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.05)' }}>
-          Hi! <br className="md:hidden" /> I'm Dev
+        <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>
+          Hi! I'm Dev
         </span>
       </h1>
 
       {/* Cinematic Lighting & Profile Photo with Scroll Scale */}
       <div
         ref={imgRef}
-        className="relative z-10 w-full h-[75vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[18vh] md:pb-[14vh]"
+        className="relative z-10 w-full h-[70vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[22vh] md:pb-[14vh]"
       >
-        <div className="absolute bottom-[25%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] bg-primary/25 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[30%] left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
         
         <img
           src="/yourphoto.png"
           alt="Dev Varshney"
-          className="h-full w-auto object-contain object-bottom filter brightness-110 contrast-[1.2] saturate-[1.2] drop-shadow-[0_-20px_100px_hsl(var(--primary)/0.6)] select-none pointer-events-none"
+          className="h-full w-auto object-contain object-bottom filter brightness-110 contrast-[1.3] saturate-[1.3] drop-shadow-[0_-30px_100px_hsl(var(--primary)/0.7)] select-none pointer-events-none"
         />
       </div>
 
