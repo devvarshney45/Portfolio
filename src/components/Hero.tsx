@@ -138,7 +138,7 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[28vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[16vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
+        className="absolute bottom-[28vh] md:bottom-[14vh] left-1/2 -translate-x-1/2 text-[17vw] md:text-[20vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>
           Hi! I'm Dev
@@ -150,7 +150,7 @@ const Hero = () => {
         ref={imgRef}
         className="relative z-10 w-full h-[70vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[22vh] md:pb-[14vh]"
       >
-        <div className="absolute bottom-[30%] left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[30%] left-1/2 -translate-x-1/2 w-[85vw] h-[85vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
         
         <img
           src="/yourphoto.png"
