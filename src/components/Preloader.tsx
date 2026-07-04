@@ -58,34 +58,34 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
   return (
     <div
       ref={preloaderRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-black px-6"
     >
-      <div className="text-center">
-        <div ref={logoRef} className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-light mb-4">
+      <div className="w-full max-w-sm text-center">
+        <div ref={logoRef} className="mb-10">
+          <h1 className="text-3xl md:text-5xl font-light mb-4">
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
               Dev Varshney
             </span>
           </h1>
-          <p className="text-lg text-gray-400 font-medium tracking-wide">
+          <p className="text-base md:text-lg text-gray-400 font-medium tracking-wide">
             Full Stack • Spring Boot • Backend Architect
           </p>
-          <p className="text-sm text-gray-600 mt-2 italic">
+          <p className="text-xs text-gray-600 mt-3 italic opacity-80">
             Initializing Professional Portfolio...
           </p>
         </div>
 
-        <div className="w-80 max-w-md mx-auto">
-          <div className="h-[2px] bg-gray-800 rounded-full overflow-hidden mb-4">
+        <div className="w-full space-y-6">
+          <div className="h-[2px] bg-gray-800 rounded-full overflow-hidden">
             <div
               ref={progressBarRef}
-              className="h-full bg-primary w-0 rounded-full shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)]"
+              className="h-full bg-primary w-0 rounded-full shadow-[0_0_20px_rgba(var(--primary-rgb),0.6)]"
             />
           </div>
 
           <div
             ref={percentRef}
-            className="text-lg font-mono text-primary"
+            className="text-2xl font-mono text-primary font-bold"
           >
             0%
           </div>

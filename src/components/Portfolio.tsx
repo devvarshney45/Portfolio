@@ -58,15 +58,21 @@ const Portfolio = () => {
       {/* PRELOADER */}
       {isLoading && <Preloader onComplete={handleLoadingComplete} />}
 
-      {/* MAIN CONTENT */}
+      {/* FIXED ELEMENTS - OUTSIDE SCROLL CONTAINER */}
+      {!isLoading && (
+        <>
+          <Navigation />
+          <Chatbot />
+        </>
+      )}
+
+      {/* MAIN CONTENT - SCROLL CONTAINER */}
       <div
         data-scroll-container
         className={`transition-opacity duration-1000 ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
       >
-        <Navigation />
-
         <main className="pt-20">
           <Hero />
           <Experience />
@@ -77,7 +83,6 @@ const Portfolio = () => {
         </main>
 
         <Footer />
-        <Chatbot />
       </div>
     </div>
   );

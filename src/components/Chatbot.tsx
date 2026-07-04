@@ -117,7 +117,7 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[200]">
       {isOpen && (
         <div
           ref={chatboxRef}
