@@ -12,7 +12,7 @@ const Hero = () => {
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.5 });
-    
+
     tl.from(titleRef.current, {
       y: 50,
       opacity: 0,
@@ -78,7 +78,7 @@ const Hero = () => {
       ctx.clearRect(0, 0, width, height);
       ctx.fillStyle = "rgba(168, 85, 247, 0.2)"; // Primary color aura
       ctx.strokeStyle = "rgba(168, 85, 247, 0.05)";
-      
+
       particles.forEach((p, i) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -92,7 +92,7 @@ const Hero = () => {
 
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
-          const dist = Math.sqrt((p.x - p2.x)**2 + (p.y - p2.y)**2);
+          const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
           if (dist < 150) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -123,8 +123,8 @@ const Hero = () => {
       className="relative h-screen w-full flex flex-col items-center justify-end overflow-hidden bg-black"
     >
       {/* Dynamic Background Animation (Neural Network / Particles) */}
-      <canvas 
-        ref={canvasRef} 
+      <canvas
+        ref={canvasRef}
         className="absolute inset-0 z-0 opacity-0 pointer-events-none"
       />
 
@@ -142,7 +142,7 @@ const Hero = () => {
       {/* Background Text - Massive Parallax Highlight */}
       <h1
         ref={titleRef}
-        className="absolute bottom-[50vh] md:bottom-[14vh] left-0 w-full text-[25vw] md:text-[21vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-[-0.15em] md:tracking-[-0.08em] z-0"
+        className="absolute bottom-[50vh] md:bottom-[14vh] left-0 w-full text-[21.5vw] md:text-[23vw] font-black whitespace-nowrap text-center select-none pointer-events-none leading-[0.7] tracking-[-0.05em] md:tracking-[-0.08em] z-0"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-primary/10" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>
           Hi! I'm Dev
@@ -155,7 +155,7 @@ const Hero = () => {
         className="relative z-10 w-full h-[80vh] md:h-[95vh] flex justify-center items-end overflow-hidden pb-[50vh] md:pb-[14vh]"
       >
         <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[90vw] h-[90vw] md:w-[40vw] md:h-[40vw] bg-primary/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
-        
+
         <img
           src="/yourphoto.png"
           alt="Dev Varshney"
