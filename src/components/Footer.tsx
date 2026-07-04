@@ -77,9 +77,8 @@ const Footer = () => {
               Dev Varshney
             </h3>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Backend-focused MERN Stack Developer passionate about building
-              secure, scalable, and production-ready systems with clean
-              architecture and modern technologies.
+              Backend-focused Full Stack Developer specializing in secure, 
+              scalable systems with Spring Boot, Node.js, and modern cloud infrastructure.
             </p>
 
             <div className="flex gap-4">
@@ -93,7 +92,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/dev-varshney-837390325"
+                href="https://linkedin.com/in/dev-varshney"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:scale-110 transition"
@@ -120,6 +119,12 @@ const Footer = () => {
                 className="block hover:text-primary transition"
               >
                 About
+              </button>
+              <button
+                onClick={() => scrollToSection("experience")}
+                className="block hover:text-primary transition"
+              >
+                Experience
               </button>
               <button
                 onClick={() => scrollToSection("projects")}

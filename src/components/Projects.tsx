@@ -1,145 +1,161 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GithubLogo, Globe } from "phosphor-react";
+import { GithubLogo, Globe, ArrowUpRight } from "phosphor-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-
-  const projects = [
-    {
-      id: 3,
-      title: "PANKAJ ELECTRICALS – MERN E-Commerce",
-      description:
-        "Full-stack MERN e-commerce platform with Google Login, Admin Dashboard & JWT authentication. Built for real business digitization.",
-      tech: ["React", "Node.js", "MongoDB", "JWT", "Tailwind"],
-      githubUrl: "https://github.com/devvarshney45/PANKAJ-ELECTRICALS",
-      liveUrl: "https://pankaj-electricals.vercel.app/",
-    },
-    {
-      id: 2,
-      title: "Society Event Registration System",
-      description:
-        "Handled 800+ registrations with security layers like Rate Limiter, Google reCAPTCHA, OTP attempt limits & domain validation.",
-      tech: ["Node.js", "Express", "MongoDB", "Rate Limiter", "AWS"],
-      githubUrl: "https://github.com/devvarshney45/hackathon-registration-backend",
-      liveUrl: "https://hackathon-registration-backend.onrender.com",
-    },
-    {
-      id: 1,
-      title: "Smart Classroom Sync System",
-      description:
-        "Role-based backend system for Teacher Web Portal & Student Mobile App. Built scalable REST APIs with JWT authentication and role-based access control.",
-      tech: ["Node.js", "Express", "MongoDB", "JWT", "AWS EC2"],
-      githubUrl: "https://github.com/devvarshney45/SmartSync",
-      liveUrl: "https://testing-p3dv.onrender.com/",
-    }
-  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 85%",
-        },
-      });
-
-      gsap.from(containerRef.current?.children || [], {
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 85%",
-        },
-      });
+      const cards = sectionRef.current?.querySelectorAll(".group");
+      if (cards && cards.length > 0) {
+        gsap.from(cards, {
+          y: 80,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+          },
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  return (
-    <section
-      id="projects"
-      ref={sectionRef}
-      className="py-20 px-6"
-    >
-      <div className="max-w-6xl mx-auto">
+  const projects = [
+    {
+      id: 1,
+      category: "Full-Stack",
+      title: "Skribbl.io Arena",
+      description:
+        "Built a full-stack real-time multiplayer drawing & guessing game from scratch — both frontend and backend — in 72 hours. Features WebSocket state sync, room management, live canvas, scoring, and reconnection.",
+      tech: ["React.js", "Node.js", "Socket.io", "PostgreSQL", "Vercel"],
+      githubUrl: "https://github.com/devvarshney45/skribbl-clone",
+      liveUrl: "https://skribbl.devvarshney.me/",
+    },
+    {
+      id: 2,
+      category: "Full-Stack",
+      title: "Swayamfin CRM",
+      description:
+        "Built the complete fintech LSP platform from scratch — React.js frontend and Spring Boot backend — with admin CRM, agent portal, automated lead routing, and 20+ REST APIs. RBI Fair Practice Code compliant.",
+      tech: ["Spring Boot", "Java", "React.js", "MongoDB", "JWT"],
+      githubUrl: "https://github.com/devvarshney45/swayamfin",
+      liveUrl: "https://www.swayamfin.com/",
+    },
+    {
+      id: 2.5,
+      category: "Full-Stack",
+      title: "AstroMadhupriya Portal",
+      description:
+        "Designed and built a complete business website from scratch for an astrology consultancy. Features service pages, appointment booking, blog, and contact/lead capture functionality.",
+      tech: ["Node.js", "React.js", "Express.js", "MongoDB", "Tailwind"],
+      githubUrl: "https://github.com/devvarshney45/astromadhupriya",
+      liveUrl: "https://www.astromadhupriya.com/",
+    },
+    {
+      id: 3,
+      category: "Backend",
+      title: "Registration Backend",
+      description:
+        "Backend server handling 1,000+ student registrations with team formation logic. Deployed on AWS EC2 achieving 99.5% uptime during live events. Implemented robust security and scaling.",
+      tech: ["Spring Boot", "Java", "AWS EC2", "PostgreSQL", "Docker"],
+      githubUrl: "https://github.com/devvarshney45/registrationsystembackend",
+      liveUrl: "",
+    },
+    {
+      id: 4,
+      category: "Backend",
+      title: "GraphGuardians Scanner",
+      description:
+        "Tool that fetches and scans GitHub repositories to detect security vulnerabilities, as part of a 4-member team for IIT Delhi Hackathon (Devcation 2026). Specialized in repository vulnerability detection.",
+      tech: ["Node.js", "Express.js", "GitHub API", "Graph Analysis"],
+      githubUrl: "https://github.com/GraphGuardians/GraphGuardians-backend",
+      liveUrl: "",
+    },
+    {
+      id: 5,
+      category: "Backend",
+      title: "Fintech API Layer",
+      description:
+        "Specialized backend microservice for Swayamfin Financial Services. Handles 20+ secure REST APIs, automated lead routing workflows, and multi-channel notification queuing.",
+      tech: ["Spring Boot", "Java", "PostgreSQL", "RabbitMQ", "AWS SES"],
+      githubUrl: "https://github.com/devvarshney45/swayamfin/tree/main/backend",
+      liveUrl: "",
+    }
+  ];
 
-        {/* TITLE */}
-        <div ref={titleRef} className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-light mb-4">
-            Featured <span className="text-primary">Projects</span>
+  return (
+    <section id="projects" ref={sectionRef} className="py-24 px-6 bg-black relative">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-3">Portfolio Highlights</p>
+          <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
+            Featured <span className="text-primary font-medium italic">Projects</span>
           </h2>
-          <div className="w-20 h-1 bg-primary rounded-full mx-auto mb-6" />
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Real-world backend and full-stack systems focused on scalability,
-            security, and deployment.
-          </p>
+          <div className="w-16 h-1 bg-primary rounded-full mt-6" />
         </div>
 
-        {/* GRID */}
-        <div
-          ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-gray-900 border border-gray-700 rounded-xl p-6 transition-transform duration-300 hover:-translate-y-2"
+              className="group bg-gray-900/40 border border-gray-800 rounded-[2rem] p-8 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 flex flex-col"
             >
-              <h3 className="text-lg font-semibold mb-3 text-white">
+              <div className="flex justify-between items-start mb-6">
+                <span className="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">
+                  {project.category}
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
-
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+              
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-8">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                    className="px-2.5 py-1 bg-gray-800/50 border border-gray-700/50 text-gray-500 text-[10px] rounded-lg font-medium"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="flex gap-4 mt-4 text-sm">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-primary hover:underline"
+              {/* ACTION LINKS MOVED TO BOTTOM */}
+              <div className="flex gap-4 pt-6 mt-auto border-t border-gray-800/50">
+                {project.githubUrl && (
+                  <a 
+                    href={project.githubUrl} 
+                    target="_blank" 
+                    className="flex items-center gap-2 text-white/60 hover:text-primary transition-colors text-xs font-semibold group/link"
                   >
-                    <Globe size={14} />
-                    Live
+                    <GithubLogo size={18} />
+                    <span>View Code</span>
+                    <ArrowUpRight size={14} className="opacity-0 group-hover/link:opacity-100 transition-all" />
                   </a>
                 )}
-
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-primary hover:underline"
+                {project.liveUrl && (
+                  <a 
+                    href={project.liveUrl} 
+                    target="_blank" 
+                    className="flex items-center gap-2 text-white/60 hover:text-primary transition-colors text-xs font-semibold group/link"
                   >
-                    <GithubLogo size={14} />
-                    Code
+                    <Globe size={18} />
+                    <span>Live Demo</span>
+                    <ArrowUpRight size={14} className="opacity-0 group-hover/link:opacity-100 transition-all" />
                   </a>
                 )}
               </div>

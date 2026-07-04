@@ -2,153 +2,153 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Code,
-  Database,
+  GithubLogo,
+  DownloadSimple,
+  ArrowRight,
   Terminal,
-  Cloud,
-  GitBranch,
-  ShieldCheck,
-  Stack,
-  Cube,
 } from "phosphor-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
 
-  const skills = [
-    { icon: Code, name: "C++ (DSA)", level: 90 },
-    { icon: Code, name: "JavaScript (ES6+)", level: 92 },
-    { icon: Stack, name: "React.js", level: 90 },
-    { icon: Terminal, name: "Node.js / Express", level: 93 },
-    { icon: Database, name: "MongoDB", level: 90 },
-    { icon: Cloud, name: "AWS EC2", level: 85 },
-    { icon: Cube, name: "Docker", level: 75 },
-    { icon: ShieldCheck, name: "JWT / Security", level: 90 },
-    { icon: GitBranch, name: "Git & GitHub", level: 88 },
-  ];
+  const downloadResume = () => {
+    const link = document.createElement("a");
+    link.href = "/My-Resume.pdf";
+    link.download = "Dev-Varshney-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(sectionRef.current?.querySelectorAll(".fade"), {
-        y: 40,
+      gsap.from(".about-animate", {
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power2.out",
+        x: (i) => (i === 0 ? -100 : 100),
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power4.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 85%",
+          start: "top 80%",
         },
       });
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 px-6">
+    <section id="about" ref={sectionRef} className="py-24 px-6 bg-black/40">
       <div className="max-w-6xl mx-auto">
-
-        {/* TOP SECTION */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-
-          {/* PHOTO */}
-          <div className="flex justify-center fade">
-            <div className="w-72 h-72 rounded-full overflow-hidden border-4 border-primary shadow-lg">
-              <img
-                src="/yourphoto.jpg"
-                alt="Dev Varshney"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-          </div>
-
-          {/* CONTENT */}
-          <div className="fade">
-            <h2 className="text-4xl md:text-5xl font-light mb-4">
-              About <span className="text-primary">Me</span>
-            </h2>
-            <div className="w-20 h-1 bg-primary rounded-full mb-6" />
-
-            <p className="text-gray-400 leading-relaxed mb-4">
-              Backend-focused MERN Stack Developer and 2nd Year B.Tech CSE student (CGPA 9.2)
-              with strong foundations in Data Structures & Algorithms.
-              I design secure, scalable REST APIs and production-ready systems.
-            </p>
-
-            <p className="text-gray-400 leading-relaxed mb-4">
-              Built high-traffic backend systems handling 800+ users with JWT authentication,
-              role-based access control, rate limiting, reCAPTCHA security,
-              and AWS EC2 deployment.
-            </p>
-
-            <p className="text-gray-400 leading-relaxed">
-              Developed Smart Classroom Sync (RBAC architecture)
-              and a real-world MERN e-commerce platform.
-            </p>
-
-            {/* Highlights */}
-            <div className="flex flex-wrap gap-4 mt-6">
-              <div className="px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg text-primary font-medium">
-                9.2 CGPA
-              </div>
-              <div className="px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg text-primary font-medium">
-                800+ Users
-              </div>
-              <div className="px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg text-primary font-medium">
-                RBAC Architecture
-              </div>
-              <div className="px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg text-primary font-medium">
-                AWS Deployment
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* SKILLS */}
-        <div>
-          <h3 className="text-3xl font-light text-center mb-12 fade">
-            Technical <span className="text-primary">Skills</span>
-          </h3>
-
-          <div
-            ref={skillsRef}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-          >
-            {skills.map((skill) => (
-              <div
-                key={skill.name}
-                className="fade bg-gray-900 border border-gray-700 rounded-xl p-6 transition-transform duration-300 hover:-translate-y-2"
-              >
-                <div className="flex flex-col items-center space-y-3">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                    <skill.icon size={22} className="text-white" />
-                  </div>
-
-                  <h4 className="text-white font-medium">
-                    {skill.name}
-                  </h4>
-
-                  <div className="w-full bg-gray-800 rounded-full h-2">
-                    <div
-                      className="bg-primary h-2 rounded-full"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
-
-                  <span className="text-primary text-sm font-medium">
-                    {skill.level}%
-                  </span>
+        <div className="grid md:grid-cols-5 gap-16 items-center">
+          
+          {/* LEFT COLUMN: Actions */}
+          <div className="md:col-span-2 space-y-6 about-animate">
+            <h3 className="text-primary text-sm font-medium tracking-[0.3em] uppercase mb-8">Take Action</h3>
+            
+            <button
+              onClick={downloadResume}
+              className="w-full group flex items-center justify-between p-6 bg-primary text-white rounded-2xl hover:bg-primary/90 transition-all duration-300 shadow-xl shadow-primary/20"
+            >
+              <div className="flex items-center gap-4">
+                <DownloadSimple size={28} weight="bold" />
+                <div className="text-left">
+                  <div className="font-bold text-lg leading-tight">My Resume</div>
+                  <div className="text-xs text-white/70 italic">PDF Document</div>
                 </div>
               </div>
-            ))}
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            <a
+              href="https://github.com/devvarshney45"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full group flex items-center justify-between p-6 bg-gray-900 border border-gray-800 text-white rounded-2xl hover:border-primary/50 transition-all duration-300"
+            >
+              <div className="flex items-center gap-4">
+                <GithubLogo size={28} weight="bold" />
+                <div className="text-left">
+                  <div className="font-bold text-lg leading-tight">GitHub Profile</div>
+                  <div className="text-xs text-gray-500 italic">Open Source & Projects</div>
+                </div>
+              </div>
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            <div className="pt-8 grid grid-cols-3 gap-3">
+               <a
+                href="https://leetcode.com/u/devvarshney1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-900/50 rounded-xl border border-gray-800 hover:border-primary/50 transition-all group text-center"
+               >
+                  <div className="text-primary font-bold text-lg leading-none group-hover:scale-110 transition-transform">168+</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-wider mt-2">LeetCode</div>
+               </a>
+               <a
+                href="https://www.codechef.com/users/dev045"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-900/50 rounded-xl border border-gray-800 hover:border-primary/50 transition-all group text-center"
+               >
+                  <div className="text-primary font-bold text-lg leading-none group-hover:scale-110 transition-transform">Active</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-wider mt-2">CodeChef</div>
+               </a>
+               <div className="p-3 bg-gray-900/50 rounded-xl border border-gray-800 text-center">
+                  <div className="text-primary font-bold text-lg leading-none">8.5</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-wider mt-2">CGPA</div>
+               </div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Senior-Level Content */}
+          <div className="md:col-span-3 space-y-6 about-animate">
+            <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
+              Backend Focused <br />
+              <span className="text-primary font-medium italic">Full Stack Developer</span>
+            </h2>
+            
+            <div className="w-16 h-1 bg-primary rounded-full mb-8" />
+
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+              <p>
+                I am a 3rd-year B.Tech Student at <span className="text-white font-medium">AKGEC Ghaziabad</span>, 
+                currently pushing the boundaries of fintech architecture as a <span className="text-white font-medium">Full Stack Intern @ Swayamfin</span>. 
+                I specialize in building secure, scalable backends with <strong>Spring Boot</strong> and <strong>Node.js</strong>.
+              </p>
+              
+              <p>
+                My journey includes being an <strong>IIT Delhi Hackathon Finalist</strong> and 
+                contributing to building high-traffic enterprise portals. I scale applications using 
+                <strong>AWS infrastructure</strong> and maintain high security standards (RBI compliance).
+              </p>
+
+              <p>
+                As a passionate <span className="text-white font-medium">Competitive Programmer</span> 
+                and <span className="text-white font-medium">Open Source contributor</span>, I solve complex 
+                algorithmic problems and contribute to real-world software on GitHub daily.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-gray-800/50">
+              <div className="flex items-center gap-3">
+                <Terminal size={20} className="text-primary" />
+                <span className="text-sm font-medium text-gray-300">Spring Boot / Java</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Terminal size={20} className="text-primary" />
+                <span className="text-sm font-medium text-gray-300">AWS / Linux</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Terminal size={20} className="text-primary" />
+                <span className="text-sm font-medium text-gray-300">PostgreSQL / MongoDB</span>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </section>
   );

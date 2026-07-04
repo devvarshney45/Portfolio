@@ -67,29 +67,35 @@ const Chatbot: React.FC = () => {
 
     setTimeout(() => {
       let reply =
-        "That's interesting! You can also ask about Dev's backend architecture, Smart Classroom system, or AWS deployment.";
+        "That's interesting! You can also ask about Dev's experience at Swayamfin, his Skribbl.io Arena project, or his backend skills.";
 
       if (lowerInput.includes("skill")) {
         reply =
-          "Dev is skilled in MERN Stack, C++ (DSA), PostgreSQL, MongoDB, AWS EC2 deployment, and implementing security layers like JWT, Rate Limiting, and reCAPTCHA.";
+          "Dev is an expert in Backend & Full-Stack. Tech stack: Java (Spring Boot), Node.js, React, TypeScript, AWS EC2, PostgreSQL, MongoDB, and Redis.";
       } else if (lowerInput.includes("project")) {
         reply =
-          "Dev built PANKAJ ELECTRICALS (MERN e-commerce), Smart Classroom Sync (Teacher Web + Student App), and a secure Event Registration backend handling 800+ users.";
-      } else if (lowerInput.includes("smart")) {
+          "Major projects: 1. Skribbl.io Arena (Real-time Fullstack), 2. Swayamfin CRM (Fintech), 3. Registration Backend (AWS), 4. GraphGuardians (IIT Delhi Hackathon Finalist).";
+      } else if (lowerInput.includes("skribbl")) {
         reply =
-          "Smart Classroom Sync is a role-based backend system. Teachers create quizzes & upload notes via web portal, students use mobile app to attempt quizzes and track performance.";
+          "Skribbl.io Arena is a real-time multiplayer drawing & guessing game with WebSocket sync, room management, and a live canvas, built in 72 hours.";
+      } else if (lowerInput.includes("swayamfin")) {
+        reply =
+          "At Swayamfin Financial Services, Dev is a Full Stack Intern architecting a production fintech platform with Spring Boot and React, handling 20+ secure REST APIs.";
       } else if (lowerInput.includes("registration")) {
         reply =
-          "Dev developed a high-traffic Event Registration backend with Middleware validation, Rate Limiter, Google reCAPTCHA, OTP attempt limit, and AWS EC2 deployment.";
-      } else if (lowerInput.includes("aws")) {
+          "Dev developed a high-traffic Event Registration backend with AWS EC2 deployment, handling 1,000+ registrations with robust security.";
+      } else if (lowerInput.includes("aws") || lowerInput.includes("infra")) {
         reply =
-          "Dev has deployed backend systems on AWS EC2 and configured production-ready environments.";
+          "Dev has extensive experience deploying production systems on AWS EC2, configuring Linux environments, PM2, and RDS instances.";
       } else if (lowerInput.includes("contact")) {
         reply =
-          "You can contact Dev at varshneydev365@gmail.com or connect via LinkedIn: linkedin.com/in/dev-varshney-837390325";
+          "You can contact Dev at devvarshney45@gmail.com or via LinkedIn.";
       } else if (lowerInput.includes("cgpa") || lowerInput.includes("education")) {
         reply =
-          "Dev is a 2nd Year B.Tech CSE student with a strong CGPA of 9.2.";
+          "Dev is a 3rd Year B.Tech Student at AKGEC with an 8.5 CGPA and a strong record in Competitive Programming.";
+      } else if (lowerInput.includes("hackathon") || lowerInput.includes("iit")) {
+        reply =
+          "Dev was an IIT Delhi Hackathon Finalist (Devcation 2026) where his team built GraphGuardians, a GitHub vulnerability scanner.";
       }
 
       const botResponse = {
@@ -115,9 +121,9 @@ const Chatbot: React.FC = () => {
       {isOpen && (
         <div
           ref={chatboxRef}
-          className="mb-4 w-80 h-96 overflow-hidden flex flex-col bg-black border border-gray-700 rounded-xl shadow-xl"
+          className="mb-4 w-80 h-96 overflow-hidden flex flex-col bg-black border border-gray-700 rounded-[2rem] shadow-2xl"
         >
-          <div className="p-4 border-b border-gray-700">
+          <div className="p-4 border-b border-gray-800">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-primary rounded-full">
@@ -127,28 +133,28 @@ const Chatbot: React.FC = () => {
                   <h3 className="font-semibold text-sm text-white">
                     Dev's AI Assistant
                   </h3>
-                  <p className="text-xs text-gray-400">Online</p>
+                  <p className="text-xs text-green-500">Online</p>
                 </div>
               </div>
               <button
                 onClick={toggleChat}
-                className="p-1 hover:bg-gray-700 rounded-full transition-colors"
+                className="p-1 hover:bg-gray-800 rounded-full transition-colors"
               >
                 <X size={16} className="text-white" />
               </button>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-sm">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-sm scrollbar-hide">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex ${msg.isBot ? "justify-start" : "justify-end"}`}
               >
                 <div
-                  className={`max-w-xs px-3 py-2 rounded-lg ${
+                  className={`max-w-[80%] px-4 py-2 rounded-2xl ${
                     msg.isBot
-                      ? "bg-gray-800 text-white"
+                      ? "bg-gray-800 text-gray-200"
                       : "bg-primary text-white"
                   }`}
                 >
@@ -158,19 +164,19 @@ const Chatbot: React.FC = () => {
             ))}
           </div>
 
-          <div className="p-4 border-t border-gray-700">
+          <div className="p-4 border-t border-gray-800">
             <div className="flex space-x-2">
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={handleKeyPress}
-                placeholder="Ask about projects or skills..."
-                className="flex-1 px-3 py-2 bg-gray-900 border border-gray-700 rounded-lg text-sm text-white focus:outline-none focus:border-primary"
+                placeholder="Ask about my projects..."
+                className="flex-1 px-4 py-2 bg-gray-900 border border-gray-800 rounded-xl text-xs text-white focus:outline-none focus:border-primary/50"
               />
               <button
                 onClick={handleSendMessage}
-                className="p-2 bg-primary rounded-lg hover:scale-105 transition-transform"
+                className="p-2 bg-primary rounded-xl hover:scale-105 transition-transform"
               >
                 <PaperPlaneTilt size={16} className="text-white" />
               </button>
@@ -182,12 +188,13 @@ const Chatbot: React.FC = () => {
       <button
         ref={buttonRef}
         onClick={toggleChat}
-        className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+        className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform relative"
       >
+        <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping" />
         {isOpen ? (
-          <X size={24} className="text-white" />
+          <X size={24} className="text-white relative z-10" />
         ) : (
-          <ChatCircle size={24} className="text-white" />
+          <ChatCircle size={24} className="text-white relative z-10" />
         )}
       </button>
     </div>

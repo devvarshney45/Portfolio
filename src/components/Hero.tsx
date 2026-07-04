@@ -1,179 +1,156 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ArrowRight, DownloadSimple, RocketLaunch } from "phosphor-react";
-import { Button } from "./ui/button";
 
 const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const orbRef1 = useRef<HTMLDivElement>(null);
-  const orbRef2 = useRef<HTMLDivElement>(null);
-  const orbRef3 = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.5 });
-
+    
     tl.from(titleRef.current, {
       y: 50,
       opacity: 0,
-      filter: "blur(10px)",
-      duration: 1,
+      duration: 1.2,
       ease: "power3.out",
-    })
-      .from(
-        subtitleRef.current,
-        {
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        "-=0.5"
-      )
-      .from(
-        ctaRef.current,
-        {
-          y: 30,
-          opacity: 0,
-          scale: 0.9,
-          duration: 0.8,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3"
-      );
+    }).from(
+      imgRef.current,
+      {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+      },
+      "-=0.8"
+    );
 
-    gsap.to(orbRef1.current, {
-      y: -20,
-      x: 10,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-    });
+    // BACKGROUND PARTICLES ANIMATION
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    gsap.to(orbRef2.current, {
-      y: -30,
-      x: -15,
-      duration: 5,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-      delay: 1,
-    });
+    let particles: any[] = [];
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
 
-    gsap.to(orbRef3.current, {
-      y: -25,
-      x: 20,
-      duration: 6,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-      delay: 2,
-    });
+    const createParticles = () => {
+      particles = [];
+      const count = 40;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          radius: Math.random() * 2 + 1
+        });
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "rgba(168, 85, 247, 0.2)"; // Primary color aura
+      ctx.strokeStyle = "rgba(168, 85, 247, 0.05)";
+      
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.sqrt((p.x - p2.x)**2 + (p.y - p2.y)**2);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(animate);
+    };
+
+    createParticles();
+    animate();
+
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      createParticles();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const downloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/My-Resume.pdf"; // Put your real resume in public folder
-    link.download = "My-Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen w-full flex flex-col items-center justify-end overflow-hidden bg-black"
     >
-      {/* Floating Orbs */}
-      <div
-        ref={orbRef1}
-        className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-xl"
-      />
-      <div
-        ref={orbRef2}
-        className="absolute top-1/3 right-1/3 w-24 h-24 bg-secondary/20 rounded-full blur-xl"
-      />
-      <div
-        ref={orbRef3}
-        className="absolute bottom-1/4 left-1/3 w-40 h-40 bg-accent/20 rounded-full blur-xl"
+      {/* Dynamic Background Animation (Neural Network / Particles) */}
+      <canvas 
+        ref={canvasRef} 
+        className="absolute inset-0 z-0 opacity-40 pointer-events-none"
       />
 
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <h1
-          ref={titleRef}
-          className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight"
-        >
-          Hi, I'm{" "}
-          <span className="bg-gradient-primary bg-clip-text text-transparent">
-            Dev Varshney
-          </span>
-          <br className="hidden md:block" />
-          <span className="text-primary">
-            Backend & MERN Stack Developer
-          </span>
-        </h1>
+      {/* Senior Level Tech Halo / Glow behind Photo */}
+      <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] max-w-[800px] max-h-[800px] z-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/5 to-transparent rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute inset-[10%] border border-primary/20 rounded-full animate-spin-slow opacity-30" />
+        <div className="absolute inset-[20%] border border-secondary/15 rounded-full animate-spin-reverse opacity-20" />
+      </div>
 
-        <p
-          ref={subtitleRef}
-          className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
-        >
-          2nd Year B.Tech CSE (CGPA 9.2) building secure and scalable backend
-          systems. Experienced in MERN stack, AWS EC2 deployment, role-based
-          architecture, and handling 800+ users with advanced security layers.
-        </p>
+      {/* Background Text - Massive Size & Aligned with Image Base */}
+      <h1
+        ref={titleRef}
+        className="absolute bottom-[12vh] left-1/2 -translate-x-1/2 text-[26vw] md:text-[22vw] font-black text-white/[0.08] whitespace-nowrap select-none pointer-events-none leading-[0.7] tracking-tighter z-0"
+      >
+        Hi! I'm Dev
+      </h1>
 
-        <div
-          ref={ctaRef}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button
-            onClick={scrollToContact}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-primary text-white rounded-lg hover:scale-105 transition-all duration-300"
-            size="lg"
-          >
-            <RocketLaunch size={20} />
-            Open to Internship
-          </Button>
-
-          <Button
-            onClick={downloadCV}
-            variant="outline"
-            className="inline-flex items-center gap-3 px-8 py-4 border-primary/40 text-primary hover:bg-primary/10 rounded-lg transition-all duration-300 hover:scale-105"
-            size="lg"
-          >
-            <DownloadSimple size={20} />
-            Download Resume
-          </Button>
-
-          <Button
-            onClick={scrollToProjects}
-            variant="ghost"
-            className="inline-flex items-center gap-3 px-8 py-4 hover:bg-primary/10 rounded-lg transition-all duration-300 hover:scale-105"
-            size="lg"
-          >
-            View Projects
-            <ArrowRight size={20} />
-          </Button>
-        </div>
+      {/* Profile Photo - Precisely Aligned to Text Bottom */}
+      <div
+        ref={imgRef}
+        className="relative z-10 w-full h-[95vh] flex justify-center items-end overflow-hidden pb-[13vh]"
+      >
+        <img
+          src="/yourphoto.png"
+          alt="Dev Varshney"
+          className="h-full w-auto object-contain object-bottom filter brightness-110 contrast-[1.15] saturate-[1.15] drop-shadow-[0_-5px_60px_hsl(var(--primary)/0.5)] select-none pointer-events-none"
+        />
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
-        </div>
+      <div className="absolute bottom-6 left-8 z-20 flex flex-col items-center gap-4">
+        <div className="w-[1px] h-12 bg-gradient-to-b from-primary via-primary/20 to-transparent rounded-full animate-bounce" />
+        <span className="text-[9px] uppercase tracking-[0.4em] text-primary/60 [writing-mode:vertical-lr] font-bold">Scroll</span>
       </div>
+
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes spin-reverse {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+        .animate-spin-reverse {
+          animation: spin-reverse 25s linear infinite;
+        }
+      `}</style>
     </section>
   );
 };

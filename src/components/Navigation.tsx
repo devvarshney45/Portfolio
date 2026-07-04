@@ -1,178 +1,119 @@
-import { useState, useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { List, X } from "phosphor-react";
+import { useState, useEffect } from "react";
+import { Link } from "react-scroll";
+import { GithubLogo, LinkedinLogo, InstagramLogo, List, X } from "phosphor-react";
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    gsap.from(navRef.current, {
-      y: -100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-      delay: 3.5,
-    });
-
-    gsap.from(logoRef.current, {
-      x: -50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      delay: 3.7,
-    });
-
-    gsap.from(menuRef.current?.children || [], {
-      y: -20,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power3.out",
-      delay: 3.8,
-    });
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (isOpen) {
-      gsap.to(mobileMenuRef.current, {
-        x: 0,
-        duration: 0.5,
-        ease: "power3.out",
-      });
-
-      gsap.from(
-        mobileMenuRef.current?.querySelectorAll(".menu-item") || [],
-        {
-          x: 50,
-          opacity: 0,
-          duration: 0.4,
-          stagger: 0.1,
-          ease: "power3.out",
-          delay: 0.2,
-        }
-      );
-    } else {
-      gsap.to(mobileMenuRef.current, {
-        x: "100%",
-        duration: 0.5,
-        ease: "power3.out",
-      });
-    }
-  }, [isOpen]);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
 
   const navItems = [
     { name: "Home", id: "hero" },
+    { name: "Experience", id: "experience" },
     { name: "About", id: "about" },
     { name: "Projects", id: "projects" },
+    { name: "Skills", id: "skills" },
     { name: "Contact", id: "contact" },
   ];
 
+  const socialLinks = [
+    { icon: GithubLogo, url: "https://github.com/devvarshney45" },
+    { icon: LinkedinLogo, url: "https://linkedin.com/in/devvarshney" },
+    { icon: InstagramLogo, url: "https://instagram.com/devvarshney" },
+  ];
+
   return (
-    <>
-      {/* DESKTOP NAV */}
-      <nav
-        ref={navRef}
-        className="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-black/40 border-b border-gray-800"
+    <nav className="fixed top-0 left-0 w-full z-[100] flex justify-center pt-6 px-4 pointer-events-none">
+      {/* Container - Floating Glassmorphic */}
+      <div 
+        className={`flex items-center justify-between w-full max-w-6xl pointer-events-auto transition-all duration-500 rounded-full px-8 py-3 
+        ${isScrolled 
+          ? "bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl" 
+          : "bg-white/5 backdrop-blur-md border border-white/5 shadow-lg"}`}
       >
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-
-            {/* LOGO */}
-            <div ref={logoRef}>
-              <h2
-                onClick={() => scrollToSection("hero")}
-                className="text-2xl font-semibold cursor-pointer bg-gradient-to-r from-indigo-500 to-cyan-400 bg-clip-text text-transparent"
-              >
-                Dev Varshney
-              </h2>
-              <p className="text-xs text-gray-400 -mt-1">
-                Backend / MERN Developer
-              </p>
-            </div>
-
-            {/* DESKTOP MENU */}
-            <div
-              ref={menuRef}
-              className="hidden md:flex items-center space-x-8"
-            >
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-gray-300 hover:text-indigo-400 transition font-light"
-                >
-                  {item.name}
-                </button>
-              ))}
-
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:scale-105 transition"
-              >
-                Hire Me
-              </button>
-            </div>
-
-            {/* MOBILE BUTTON */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-white p-2"
-            >
-              <List size={24} />
-            </button>
+        {/* BRAND / LOGO */}
+        <div className="flex items-center gap-2 group cursor-pointer">
+          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center font-black text-black group-hover:scale-110 transition-transform">
+            D
           </div>
-        </div>
-      </nav>
-
-      {/* MOBILE MENU */}
-      <div
-        ref={mobileMenuRef}
-        className="fixed top-0 right-0 w-full h-full bg-black z-50 transform translate-x-full md:hidden"
-      >
-        <div className="flex items-center justify-between p-6 border-b border-gray-800">
-          <h2 className="text-xl font-semibold text-indigo-400">
-            Dev Varshney
-          </h2>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="text-white p-2"
-          >
-            <X size={24} />
-          </button>
+          <span className="text-white font-bold tracking-tight text-lg hidden sm:block">Dev Varshney</span>
         </div>
 
-        <div className="flex flex-col space-y-6 p-6 mt-8">
+        {/* DESKTOP LINKS - CENTERED */}
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) => (
-            <button
+            <Link
               key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="menu-item text-left text-xl text-gray-300 hover:text-indigo-400 transition"
+              to={item.id}
+              smooth={true}
+              duration={500}
+              spy={true}
+              activeClass="text-primary font-bold"
+              className="text-gray-400 hover:text-white transition-colors cursor-pointer text-sm font-medium tracking-wide"
             >
               {item.name}
-            </button>
+            </Link>
           ))}
+        </div>
 
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="menu-item px-6 py-3 bg-indigo-600 text-white rounded-lg mt-8"
-          >
-            Hire Me
-          </button>
+        {/* SOCIAL ICONS - RIGHT */}
+        <div className="hidden md:flex items-center gap-4 border-l border-white/10 pl-6 ml-6">
+          {socialLinks.map((social, i) => (
+            <a 
+              key={i} 
+              href={social.url} 
+              target="_blank" 
+              className="text-gray-400 hover:text-primary transition-all hover:scale-110"
+            >
+              <social.icon size={20} weight="bold" />
+            </a>
+          ))}
+        </div>
+
+        {/* MOBILE MENU TOGGLE */}
+        <button 
+          className="md:hidden text-white p-2"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <List size={28} />}
+        </button>
+      </div>
+
+      {/* MOBILE MENU OVERLAY */}
+      <div 
+        className={`fixed inset-0 bg-black/95 z-[90] md:hidden flex flex-col items-center justify-center transition-all duration-500 pointer-events-auto
+        ${isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"}`}
+      >
+        <div className="flex flex-col items-center gap-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.id}
+              to={item.id}
+              smooth={true}
+              duration={500}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-3xl text-gray-400 hover:text-white font-light tracking-widest"
+            >
+              {item.name}
+            </Link>
+          ))}
+          <div className="flex gap-8 mt-12 pt-12 border-t border-white/10">
+            {socialLinks.map((social, i) => (
+              <a key={i} href={social.url} target="_blank" className="text-gray-400 hover:text-primary">
+                <social.icon size={32} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </>
+    </nav>
   );
 };
 
