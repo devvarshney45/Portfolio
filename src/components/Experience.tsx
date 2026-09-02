@@ -81,7 +81,7 @@ const Experience = () => {
           <div className="w-12 h-1 bg-primary rounded-full mt-4 mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {experiences.map((exp, index) => (
             <div 
               key={index} 
