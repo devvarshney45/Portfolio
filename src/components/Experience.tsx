@@ -12,6 +12,19 @@ const Experience = () => {
   const experiences = [
     {
       title: "Full Stack Engineer Intern",
+      company: "NavRasa IT Solutions",
+      location: "Remote",
+      period: "Aug 2026 - Present",
+      icon: Briefcase,
+      color: "from-blue-400 to-cyan-600",
+      description: [
+        "Secured a paid internship as a Full Stack Engineer through LinkedIn.",
+        "Contributing to full-stack development tasks and collaborating with the engineering team remotely to deliver quality software solutions."
+      ],
+      tech: ["React.js", "Node.js", "MongoDB", "Express.js"]
+    },
+    {
+      title: "Full Stack Engineer Intern",
       company: "Swayamfin Financial Services",
       location: "Remote, Delhi",
       period: "Apr 2026 - Present",
