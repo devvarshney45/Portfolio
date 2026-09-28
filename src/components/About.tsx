@@ -98,8 +98,7 @@ const About = () => {
               </p>
               
               <p>
-                My journey includes being an <strong>IIT Delhi Hackathon Finalist</strong> and 
-                contributing to building high-traffic enterprise portals. I scale applications using 
+                My journey includes being a <strong>Payment AI Agent Arena Finalist</strong> and an <strong>IIT Delhi Hackathon Finalist</strong>. I scale applications using 
                 <strong>AWS infrastructure</strong> and maintain high security standards (RBI compliance).
               </p>
 
@@ -108,6 +107,39 @@ const About = () => {
                 and <span className="text-white font-medium">Open Source contributor</span>, I solve complex 
                 algorithmic problems and contribute to real-world software on GitHub daily.
               </p>
+            </div>
+
+            {/* Achievements - Premium Animated Block */}
+            <div className="mt-8 pt-8 border-t border-gray-800/50">
+              <h4 className="text-white font-medium mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                Key Achievements
+              </h4>
+              <div className="space-y-3">
+                <a 
+                  href="https://drive.google.com/file/d/1aMBUfZyLTLucAqCdr07zRA4rGYF-e0Ta/view?usp=drivesdk" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between p-4 bg-gray-900/40 border border-gray-800 rounded-xl hover:border-primary/40 hover:bg-gray-800/50 transition-all duration-300 reveal reveal-bottom"
+                >
+                  <div className="flex flex-col">
+                    <span className="text-white font-medium group-hover:text-primary transition-colors">Payment AI Agent Arena – Finalist</span>
+                    <span className="text-xs text-gray-500 mt-1">View Certificate</span>
+                  </div>
+                  <ArrowRight size={16} className="text-gray-600 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                </a>
+                
+                <a 
+                  href="#" 
+                  className="group flex items-center justify-between p-4 bg-gray-900/40 border border-gray-800 rounded-xl hover:border-primary/40 hover:bg-gray-800/50 transition-all duration-300 reveal reveal-bottom reveal-delay-1"
+                >
+                  <div className="flex flex-col">
+                    <span className="text-white font-medium group-hover:text-primary transition-colors">IIT Delhi Hackathon Finalist (Devcation 2026)</span>
+                    <span className="text-xs text-gray-500 mt-1">Led a 4-member team building GraphGuardians</span>
+                  </div>
+                  <ArrowRight size={16} className="text-gray-600 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                </a>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-gray-800/50">

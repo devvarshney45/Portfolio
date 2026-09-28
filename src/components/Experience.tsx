@@ -18,10 +18,10 @@ const Experience = () => {
       icon: Briefcase,
       color: "from-blue-400 to-cyan-600",
       description: [
-        "Secured a paid internship as a Full Stack Engineer through LinkedIn.",
-        "Contributing to full-stack development tasks and collaborating with the engineering team remotely to deliver quality software solutions."
+        "Developed a Next.js frontend and the core Spring Boot backend of a real-time client software platform used by thousands of users; designed and consumed REST APIs on a live production codebase.",
+        "Integrated Razorpay payments and deployed the backend on AWS EC2, optimizing it for scalability and stable performance under high concurrent traffic."
       ],
-      tech: ["React.js", "Node.js", "MongoDB", "Express.js"]
+      tech: ["Next.js", "Spring Boot", "AWS EC2", "Razorpay"]
     },
     {
       title: "Full Stack Engineer Intern",
@@ -31,11 +31,23 @@ const Experience = () => {
       icon: ShieldCheck,
       color: "from-blue-500 to-indigo-600",
       description: [
-        "Building and maintaining a production fintech platform end-to-end — React.js frontend, admin CRM dashboard, and agent portal, with backend built in Spring Boot.",
-        "Designed 20+ REST APIs and automated lead routing logic (city → branch → round-robin agent) with SMS/email notifications.",
-        "Compliant with RBI Fair Practice Code & DPDP Act; collaborating on feature planning, API design, and production workflows."
+        "Built a production fintech LSP platform end-to-end: React.js frontend, admin CRM, agent portal and Spring Boot backend, compliant with RBI Fair Practice Code and DPDP Act.",
+        "Designed 20+ REST APIs and an automated lead-routing engine (city → branch → agent) with SMS/email alerts, removing manual lead assignment."
       ],
       tech: ["Spring Boot", "React.js", "PostgreSQL", "AWS EC2", "RBAC"]
+    },
+    {
+      title: "SDE Intern",
+      company: "Prudentia Capital",
+      location: "Remote",
+      period: "Jul 2026 - Present",
+      icon: Database,
+      color: "from-emerald-400 to-green-600",
+      description: [
+        "Built the Next.js frontend and a microservices backend for a production platform, splitting the system into independently deployable services behind an API gateway and load balancer.",
+        "Integrated Redis caching for fast reads and Apache Kafka for event-driven, asynchronous service-to-service communication; deployed and maintained the backend on Hostinger."
+      ],
+      tech: ["Next.js", "Microservices", "Redis", "Apache Kafka"]
     },
     {
       title: "Freelance Full Stack Developer",
@@ -45,11 +57,9 @@ const Experience = () => {
       icon: Globe,
       color: "from-purple-500 to-pink-600",
       description: [
-        "Designed and delivered a complete business website for AstroMadhupriya, an astrology consultancy.",
-        "Built service pages, appointment booking, blog, and contact/lead capture functionality.",
-        "Managed deployment and hosting setup ensuring 99.9% availability for the astro consultancy."
+        "Delivered AstroMadhupriya, a full business platform with Razorpay payments, booking, blog CMS and an admin portal, live at astromadhupriya.com."
       ],
-      tech: ["Node.js", "React.js", "Express.js", "MongoDB", "Tailwind CSS"]
+      tech: ["Node.js", "React.js", "Express.js", "MongoDB", "Razorpay"]
     },
     {
       title: "Backend Developer",
@@ -57,13 +67,12 @@ const Experience = () => {
       location: "AKGEC, Ghaziabad",
       period: "Nov 2025 - May 2026",
       icon: Database,
-      color: "from-emerald-500 to-teal-600",
+      color: "from-teal-500 to-cyan-600",
       description: [
-        "Built and hardened backend APIs with OTP verification, Google reCAPTCHA, and rate limiting.",
-        "Deployed and managed the platform's server on AWS EC2, handling traffic from 1,000+ college students.",
-        "Ensured multi-layer security to protect against common web vulnerabilities during high-traffic events."
+        "Built the backend for the society and student registration portal, handling thousands of registrations on AWS EC2 with Redis caching and optimized database queries.",
+        "Secured APIs with OTP verification, Google reCAPTCHA, Cloudflare and rate limiting to protect the platform from bots, abuse and attacks."
       ],
-      tech: ["Java", "Express.js", "AWS EC2", "Redis", "Rate Limiting"]
+      tech: ["Node.js", "AWS EC2", "Redis", "Rate Limiting"]
     },
   ];
 
@@ -81,7 +90,7 @@ const Experience = () => {
           <div className="w-12 h-1 bg-primary rounded-full mt-4 mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {experiences.map((exp, index) => (
             <div 
               key={index} 
